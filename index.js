@@ -2,7 +2,7 @@ function convertDecimalNumber(decimalNum,base){
     let remainders = "";
     if(!isNaN(decimalNum)){
         let quotient = decimalNum;
-        while (quotient != 0) {
+        while (quotient > 0) {
             let remainder = (quotient % base);
             if (base == 16) {
                 switch (remainder) {
@@ -57,8 +57,9 @@ function isBinary(binaryNum){
 
 function isOctal(octalNum){
     let isOctal = true;
+    let octalVals = ['0','1','2','3','4','5','6','7'];
     for (let i = 0; i < octalNum.length; i++){
-        if (octalNum[i] < 0 || octalNum[i] > 7){
+        if (!(octalVals.includes(octalNum[i]))){
             isOctal = false;
             break;
         }
