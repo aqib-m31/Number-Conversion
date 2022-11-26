@@ -1,0 +1,21 @@
+body {
+    background-image: url("bg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    text-align: center;
+    background-color:crimson;
+}
+
+#answer {
+    margin-top: 15%;
+    font-weight: bolder;
+    font-size:80%;
+}
+
+div {
+    text-align: center;
+    margin:auto;
+    padding: 5px;
+    display: grid;
+    width:  50%;
+}
