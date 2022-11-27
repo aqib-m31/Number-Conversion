@@ -1,15 +1,42 @@
 body {
     background-image: url("bg.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     background-size: 100%;
     text-align: center;
     background-color:crimson;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
 }
 
+.paraColor {
+    color: white;
+    text-align: center;
+}
+
+#title {
+    margin-top: 15px;
+    color: cornsilk;
+    /* text-decoration: underline aliceblue wavy 1.5px; */
+    padding: 5px;
+    border: solid 2px gray;
+    border-left:hidden;
+    border-right: hidden;
+    font-family: 'Bebas Neue', cursive;
+}
+
+#footer {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: x-small;
+    background-color: black;
+    color: gray;
+}
 #answer {
-    margin-top: 15%;
+    margin-top: 1%;
     font-weight: bolder;
-    font-size:80%;
+    font-size:25px;
+    /* color: azure; */
+    color: #CFFDE1;
 }
 
 div {
