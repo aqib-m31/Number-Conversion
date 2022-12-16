@@ -1,7 +1,7 @@
 function convertDecimalNumber(decimalNum,base){
     let remainders = "";
     if(!isNaN(decimalNum)){
-        let quotient = decimalNum;
+        let quotient = Math.floor(decimalNum);
         while (quotient > 0) {
             let remainder = (quotient % base);
             if (base == 16) {
@@ -33,10 +33,47 @@ function convertDecimalNumber(decimalNum,base){
             }
             quotient = Math.floor(quotient / base);
         }
+        let resultFraction = "";
+        if (!Number.isInteger(decimalNum)) {
+            let fraction = decimalNum - Math.floor(decimalNum);
+            while (fraction != 0) {
+               fraction = fraction * base;
+                let integralPart = Math.floor(fraction);
+                if (base == 16) {
+                    switch (integralPart) {
+                        case 10:
+                            resultFraction += 'A';
+                            break;
+                        case 11:
+                            resultFraction += 'B';
+                            break;
+                        case 12:
+                            resultFraction += 'C';
+                            break;
+                        case 13:
+                            resultFraction += 'D';
+                            break;
+                        case 14:
+                            resultFraction += 'E';
+                            break;
+                        case 15:
+                            resultFraction += 'F';
+                            break;
+                        default:
+                            resultFraction += integralPart;
+                            break;
+                    }
+                } else {
+                    resultFraction += integralPart;
+                }
+               fraction = fraction - integralPart;
+            }
+        }
         let resultNum = "";
         for (let i = remainders.length-1; i>= 0; i--){
             resultNum += remainders[i];
         }
+        resultNum += "." + resultFraction;
         return resultNum;
     } else {
         return undefined;
