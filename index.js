@@ -33,8 +33,13 @@ function convertDecimalNumber(decimalNum,base){
             }
             quotient = Math.floor(quotient / base);
         }
+        let resultNum = "";
+        for (let i = remainders.length-1; i>= 0; i--){
+            resultNum += remainders[i];
+        }
         let resultFraction = "";
         if (!Number.isInteger(decimalNum)) {
+            resultNum += '.';
             let fraction = decimalNum - Math.floor(decimalNum);
             while (fraction != 0) {
                fraction = fraction * base;
@@ -68,12 +73,8 @@ function convertDecimalNumber(decimalNum,base){
                 }
                fraction = fraction - integralPart;
             }
+            resultNum += resultFraction;
         }
-        let resultNum = "";
-        for (let i = remainders.length-1; i>= 0; i--){
-            resultNum += remainders[i];
-        }
-        resultNum += "." + resultFraction;
         return resultNum;
     } else {
         return undefined;
