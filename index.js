@@ -83,38 +83,21 @@ function convertDecimalNumber(decimalNum,base){
 }
 
 function isBinary(binaryNum){
-    let isBinary = true;
-    for (let i = 0; i < binaryNum.length; i++){
-        if (binaryNum[i] != 0 && binaryNum[i] != 1){
-            isBinary = false;
-            break;
-        }
-    }
-    return isBinary;
+    const binaryFormatWithoutFraction = /^[0-1]+$/;
+    const binaryFormatWithFraction = /^[0-1]+\.[0-1]+$/;
+    return binaryFormatWithoutFraction.test(binaryNum) || binaryFormatWithFraction.test(binaryNum);
 }
 
 function isOctal(octalNum){
-    let isOctal = true;
-    let octalVals = ['0','1','2','3','4','5','6','7'];
-    for (let i = 0; i < octalNum.length; i++){
-        if (!(octalVals.includes(octalNum[i]))){
-            isOctal = false;
-            break;
-        }
-    }
-    return isOctal;
+    const octalFormatWithoutFraction = /^[0-7]+$/;
+    const octalFormatWithFraction = /^[0-7]+\.[0-7]+$/;
+    return octalFormatWithoutFraction.test(octalNum) || octalFormatWithFraction.test(octalNum);
 }
 
 function isHexadecimal(hexadecimalNum){
-    let isHexadecimal = true;
-    let hexValsTenToFifteen = ['A','B','C','D','E','F','0','1','2','3','4','5','6','7','8','9'];
-    for (let i = 0; i < hexadecimalNum.length; i++){
-        if (!(hexValsTenToFifteen.includes(hexadecimalNum[i]))){
-            isHexadecimal = false;
-            break;
-        }
-    }
-    return isHexadecimal;
+    const hexadecimalFormatWithoutFraction = /^[0-9A-Fa-f]+$/;
+    const hexadecimalFormatWithFraction = /^[0-9A-Fa-f]+\.[0-9A-Fa-f]+$/;
+    return hexadecimalFormatWithoutFraction.test(hexadecimalNum) || hexadecimalFormatWithFraction.test(hexadecimalNum);
 }
 
 function convertBinaryNumber(binaryNum,base){
