@@ -85,66 +85,111 @@ function convertDecimalNumber(decimalNum,base){
 function isBinary(binaryNum){
     const binaryFormatWithoutFraction = /^[0-1]+$/;
     const binaryFormatWithFraction = /^[0-1]+\.[0-1]+$/;
-    return binaryFormatWithoutFraction.test(binaryNum) || binaryFormatWithFraction.test(binaryNum);
+    const binaryStartingWithDot = /^\.[0-1]+$/;
+    return binaryFormatWithoutFraction.test(binaryNum) || binaryFormatWithFraction.test(binaryNum) || binaryStartingWithDot.test(binaryNum);
 }
 
 function isOctal(octalNum){
     const octalFormatWithoutFraction = /^[0-7]+$/;
     const octalFormatWithFraction = /^[0-7]+\.[0-7]+$/;
-    return octalFormatWithoutFraction.test(octalNum) || octalFormatWithFraction.test(octalNum);
+    const octalStartingWithDot = /^\.[0-7]+$/;
+    return octalFormatWithoutFraction.test(octalNum) || octalFormatWithFraction.test(octalNum) || octalStartingWithDot.test(octalNum);
 }
 
 function isHexadecimal(hexadecimalNum){
     const hexadecimalFormatWithoutFraction = /^[0-9A-Fa-f]+$/;
     const hexadecimalFormatWithFraction = /^[0-9A-Fa-f]+\.[0-9A-Fa-f]+$/;
-    return hexadecimalFormatWithoutFraction.test(hexadecimalNum) || hexadecimalFormatWithFraction.test(hexadecimalNum);
+    const hexadecimalStartingWithDot = /^\.[0-9A-Fa-f]+$/;
+    return hexadecimalFormatWithoutFraction.test(hexadecimalNum) || hexadecimalFormatWithFraction.test(hexadecimalNum) || hexadecimalStartingWithDot.test(hexadecimalNum);
 }
 
 function convertBinaryNumber(binaryNum,base){
+    let wholePart = binaryNum.split('.')[0];
+    let fractionPart = binaryNum.split('.')[1];
     let sum = 0;
-    for (let i = binaryNum.length - 1; i >= 0; i--) {
-        if (binaryNum[i] == 1){
-            sum += 2**(binaryNum.length-i-1);
+    for (let i = wholePart.length - 1; i >= 0; i--) {
+        sum += wholePart[i]*(2**(wholePart.length-i-1));
+    }
+    if (fractionPart != undefined) {
+        for (let i = 0; i < fractionPart.length; i++) {
+            sum += fractionPart[i]*(2**(-(i+1)));
         }
     }
     return convertDecimalNumber(sum,base);
 }
 
 function convertOctalNumber(octalNum,base){
+    let wholePart = octalNum.split('.')[0];
+    let fractionPart = octalNum.split('.')[1];
     let sum = 0;
-    for (let i = octalNum.length - 1; i >= 0; i--) {
-        sum += octalNum[i]*(8**(octalNum.length-i-1));
+    for (let i = wholePart.length - 1; i >= 0; i--) {
+        sum += wholePart[i]*(8**(wholePart.length-i-1));
+    }
+    if (fractionPart != undefined) {
+        for (let i = 0; i < fractionPart.length; i++) {
+            sum += fractionPart[i]*(8**(-(i+1)));
+        }
     }
     return convertDecimalNumber(sum,base);
 }
 
 function convertHexadecimalNumber(hexadecimalNum,base){
+    let wholePart = hexadecimalNum.split('.')[0].toUpperCase();
+    let fractionPart = hexadecimalNum.split('.')[1].toUpperCase();
     let sum = 0;
-    for (let i = hexadecimalNum.length - 1; i >= 0; i--) {
-        switch (hexadecimalNum[i]) {
+    for (let i = wholePart.length - 1; i >= 0; i--) {
+        switch (wholePart[i]) {
             case 'A':
-                sum += 10*(16**(hexadecimalNum.length-i-1));
+                sum += 10*(16**(wholePart.length-i-1));
                 break;
             case 'B':
-                sum += 11*(16**(hexadecimalNum.length-i-1));
+                sum += 11*(16**(wholePart.length-i-1));
                 break;
             case 'C':
-                sum += 12*(16**(hexadecimalNum.length-i-1));
+                sum += 12*(16**(wholePart.length-i-1));
                 break;
             case 'D':
-                sum += 13*(16**(hexadecimalNum.length-i-1));
+                sum += 13*(16**(wholePart.length-i-1));
                 break;
             case 'E':
-                sum += 14*(16**(hexadecimalNum.length-i-1));
+                sum += 14*(16**(wholePart.length-i-1));
                 break;
             case 'F':
-                sum += 15*(16**(hexadecimalNum.length-i-1));
+                sum += 15*(16**(wholePart.length-i-1));
                 break;
             default:
-                sum += hexadecimalNum[i]*(16**(hexadecimalNum.length-i-1));
+                sum += wholePart[i]*(16**(wholePart.length-i-1));
                 break;
         }
     }
+    if (fractionPart != undefined) {
+        for (let i = 0; i < fractionPart.length; i++) {
+            switch (fractionPart[i]) {
+                case 'A':
+                    sum += 10*(16**(-(i+1)));
+                    break;
+                case 'B':
+                    sum += 11*(16**(-(i+1)));
+                    break;
+                case 'C':
+                    sum += 12*(16**(-(i+1)));
+                    break;
+                case 'D':
+                    sum += 13*(16**(-(i+1)));
+                    break;
+                case 'E':
+                    sum += 14*(16**(-(i+1)));
+                    break;
+                case 'F':
+                    sum += 15*(16**(-(i+1)));
+                    break;
+                default:
+                    sum += fractionPart[i]*(16**(-(i+1)));
+                    break;
+            }
+        }
+    }
+
     return convertDecimalNumber(sum,base);
 }
 
@@ -271,6 +316,7 @@ function h2o(){
         alert("Invalid hexadecimal number");
     }
 }
+
 function h2d(){
     let num = prompt("Enter number: ");
     if (isHexadecimal(num)){
