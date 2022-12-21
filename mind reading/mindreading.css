@@ -1,36 +1,80 @@
 body{
-    background-color: #FFEFD6;
+    background: #21262E;
 }
-#ans{
-    color: #031b2c;
-    font-size: 25px;
-    font-weight: bolder;
+
+#cardDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+}
+#card{
+    width: 90%;
+}
+#heading{
     font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    font-size: xx-large;
+    background: linear-gradient(92.17deg, #E1FFBA 4.11%, #8CE99B 24.7%, #87B5EC 39.97%, #FDF999 68.05%, #4DCF99 85.29%, #FFFFFF 98.68%, #B2FA86 98.69%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    /* text-fill-color: transparent; */
 }
 
-#cards{
-    width: 95%;
-    margin: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#mr1{
+    float: left;
+    height: 90vh;
+    margin-left: 2px;
+}
+#mr2{
+    float: right;
+    height: 90vh;
+    margin-right: 2px;
+}
+.input{
+    text-align: center;
+    border: #FFFFFF 2px solid;
+    padding-top: 5px;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #FFC680;
+    font-size: large;
+    font-family: 'Archivo Narrow', sans-serif;
 }
 
+.inputField{
+    border: solid 4px #FFC680;
+    background-color: transparent;
+    color: white;
+    margin-left: 15px;
+    height: 30px;
+    padding-left: 10px;
+}
 .centerText{
     text-align: center;
 }
-
-#input{
+.btn{
+    background-color: rgb(36, 171, 126);
+    border: none;
+    color: #21262E;
     text-align: center;
-    border: #031b2c 2px solid;
-    padding-top: 5px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: medium;
+    margin-top: 10px;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn{
-    margin-top: 10px;
-    font-size: 15px;
-    background-color: black;
-    color: #FFEFD6;
-    padding: 7px;
-    margin-bottom: 5px;
+#ans{
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    letter-spacing: 2px;
 }

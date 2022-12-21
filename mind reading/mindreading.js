@@ -6,6 +6,7 @@ function findBirthday(){
     let birthmonthCNoValue = birthmonthCNo.value;
     // console.log(birthdayCNoValue);
     if(birthdayCNoValue == "" || birthmonthCNoValue == ""){
+        ans.innerHTML = "Please enter both values";
         alert("Please enter both values");
         return;
     }
