@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemme read your mind!</title>
+    <link rel="stylesheet" href="mindreading.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <img src="\images\mr1.png" alt="" id="mr1" class="mr">
+    <img src="\images\mr2.png" alt="" id="mr2" class="mr">
+    <p id="heading">MAGIC CARDS: BIRTHDAY GUESSING GAME</p>
+    <div id="cardDiv">
+        <img src="\images\cards.png" alt="Cards" id="card">
+    </div>
+    <div class="input">
+        <label for="" id="birthdayLabel">Enter card numbers separated by spaces in which your birthday exists</label><br><br>
+        <input type="text" name="" class="inputField" placeholder="Enter Card Numbers" id="birthdayCNo"><br><hr>
+        <label for="" id="birthmonthLabel">Enter card numbers separated by spaces in which your birth month exists</label><br><br>
+        <input type="text" name="" class="inputField" placeholder="Enter Card Numbers" id="birthmonthCNo"><br><br>
+    </div>
+    <div class="centerText">
+        <button class="btn" id="resetbtn" onclick="resetValues()">RESET</button>
+        <button class="btn" id="bdaybtn" onclick="findBirthday()">When is my birthday?</button>
+        <a href="\index.html" alt="Home" class="btn">HOME</a>
+    </div>
+    <div>
+        <p id="ans" class="centerText"></p>
+    </div>
+    <script src="mindreading.js"></script>
+</body>
+</html>
