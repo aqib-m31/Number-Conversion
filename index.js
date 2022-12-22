@@ -134,11 +134,11 @@ function convertOctalNumber(octalNum,base){
 }
 
 function convertHexadecimalNumber(hexadecimalNum,base){
-    let wholePart = hexadecimalNum.split('.')[0].toUpperCase();
-    let fractionPart = hexadecimalNum.split('.')[1].toUpperCase();
+    let wholePart = hexadecimalNum.split('.')[0];
+    let fractionPart = hexadecimalNum.split('.')[1];
     let sum = 0;
     for (let i = wholePart.length - 1; i >= 0; i--) {
-        switch (wholePart[i]) {
+        switch (wholePart[i].toUpperCase()) {
             case 'A':
                 sum += 10*(16**(wholePart.length-i-1));
                 break;
@@ -164,7 +164,7 @@ function convertHexadecimalNumber(hexadecimalNum,base){
     }
     if (fractionPart != undefined) {
         for (let i = 0; i < fractionPart.length; i++) {
-            switch (fractionPart[i]) {
+            switch (fractionPart[i].toUpperCase()) {
                 case 'A':
                     sum += 10*(16**(-(i+1)));
                     break;
@@ -189,7 +189,7 @@ function convertHexadecimalNumber(hexadecimalNum,base){
             }
         }
     }
-
+    console.log(sum);
     return convertDecimalNumber(sum,base);
 }
 
@@ -298,7 +298,7 @@ function o2h(){
 
 // hexadecimal conversions
 function h2b(){
-    let num = prompt("Enter number: ");
+    let num = prompt("Enter number: ").toUpperCase();
     if (isHexadecimal(num)){
         let ans = convertHexadecimalNumber(num,2);
         answer.innerHTML = `(${num})<small><sub>16</sub></small> = (${ans})<small><sub>2</sub></small>`;
@@ -308,7 +308,7 @@ function h2b(){
 }
 
 function h2o(){
-    let num = prompt("Enter number: ");
+    let num = prompt("Enter number: ").toUpperCase();
     if (isHexadecimal(num)){
         let ans = convertHexadecimalNumber(num,8);
         answer.innerHTML = `(${num})<small><sub>16</sub></small> = (${ans})<small><sub>8</sub></small>`;
@@ -318,7 +318,7 @@ function h2o(){
 }
 
 function h2d(){
-    let num = prompt("Enter number: ");
+    let num = prompt("Enter number: ").toUpperCase();
     if (isHexadecimal(num)){
         let ans = convertHexadecimalNumber(num,10);
         answer.innerHTML = `(${num})<small><sub>16</sub></small> = (${ans})<small><sub>10</sub></small>`;
