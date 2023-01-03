@@ -23,3 +23,4 @@ It simply works by turning ON the bits of the 5 digit binary number "00000" in w
 * Getting started to participate in hackathons.  
 * Learn by building.  
 * "No matter how simple - build and get started!" - Alvin
+-Faisal malik says that this Number conversion is very useful.
