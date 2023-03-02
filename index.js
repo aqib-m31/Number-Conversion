@@ -1,5 +1,6 @@
 function convertDecimalNumber(decimalNum,base){
     let remainders = "";
+    decimalNum = Number(decimalNum);
     if(!isNaN(decimalNum)){
         let quotient = Math.floor(decimalNum);
         while (quotient > 0) {
@@ -71,7 +72,7 @@ function convertDecimalNumber(decimalNum,base){
                 } else {
                     resultFraction += integralPart;
                 }
-               fraction = fraction - integralPart;
+                fraction = fraction - integralPart;
             }
             resultNum += resultFraction;
         }
