@@ -38,6 +38,9 @@ function convertDecimalNumber(decimalNum,base){
         for (let i = remainders.length-1; i>= 0; i--){
             resultNum += remainders[i];
         }
+        if (resultNum.length == 0) {
+            resultNum += "0";
+        }
         let resultFraction = "";
         if (!Number.isInteger(decimalNum)) {
             resultNum += '.';
