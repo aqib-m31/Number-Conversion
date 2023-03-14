@@ -3,7 +3,8 @@ body {
     background-repeat: repeat-y;
     background-size: 100%;
     text-align: center;
-    background: #21262E !important;
+    /* background: #21262E !important; */
+    background: #1A2231 !important;
     color: white;
     font-family: 'Bebas Neue', cursive;
 }
