@@ -87,24 +87,18 @@ function convertDecimalNumber(decimalNum,base){
 }
 
 function isBinary(binaryNum){
-    const binaryFormatWithoutFraction = /^[0-1]+$/;
-    const binaryFormatWithFraction = /^[0-1]+\.[0-1]+$/;
-    const binaryStartingWithDot = /^\.[0-1]+$/;
-    return binaryFormatWithoutFraction.test(binaryNum) || binaryFormatWithFraction.test(binaryNum) || binaryStartingWithDot.test(binaryNum);
+    const binaryFormat = /^([0-1]+\.?|[0-1]*\.[0-1]+|\.[0-1]+)$/;
+    return binaryFormat.test(binaryNum);
 }
 
 function isOctal(octalNum){
-    const octalFormatWithoutFraction = /^[0-7]+$/;
-    const octalFormatWithFraction = /^[0-7]+\.[0-7]+$/;
-    const octalStartingWithDot = /^\.[0-7]+$/;
-    return octalFormatWithoutFraction.test(octalNum) || octalFormatWithFraction.test(octalNum) || octalStartingWithDot.test(octalNum);
+    const octalFormat = /^([0-7]+\.?|[0-7]*\.[0-7]+|\.[0-7]+)$/;
+    return octalFormat.test(octalNum);
 }
 
 function isHexadecimal(hexadecimalNum){
-    const hexadecimalFormatWithoutFraction = /^[0-9A-Fa-f]+$/;
-    const hexadecimalFormatWithFraction = /^[0-9A-Fa-f]+\.[0-9A-Fa-f]+$/;
-    const hexadecimalStartingWithDot = /^\.[0-9A-Fa-f]+$/;
-    return hexadecimalFormatWithoutFraction.test(hexadecimalNum) || hexadecimalFormatWithFraction.test(hexadecimalNum) || hexadecimalStartingWithDot.test(hexadecimalNum);
+    const hexadecimalFormat = /^([0-9A-Fa-f]+\.?|[0-9A-Fa-f]*\.[0-9A-Fa-f]+|\.[0-9A-Fa-f]+)$/;
+    return hexadecimalFormat.test(hexadecimalNum);
 }
 
 function convertBinaryNumber(binaryNum,base){
