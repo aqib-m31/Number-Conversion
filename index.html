@@ -18,27 +18,27 @@
       <p align="center" id="answer"  class="paraColor">Answer will appear here</p>
     <div id="top">
       <p align="center" class="paraColor"><b>Available Conversions</b></p>
-      <button type="button" class="btn btn-info" onclick="d2b()">Decimal to Binary</button>
-      <button type="button" class="btn btn-info" onclick="d2o()">Decimal to Octal</button>
-      <button type="button" class="btn btn-info" onclick="d2h()">Decimal to Hexadecimal</button>
+      <button type="button" class="btn btn-info" onclick="convert(get_number(), 10, 2)">Decimal to Binary</button>
+      <button type="button" class="btn btn-info" onclick="convert(get_number(), 10, 8)">Decimal to Octal</button>
+      <button type="button" class="btn btn-info" onclick="convert(get_number(), 10, 16)">Decimal to Hexadecimal</button>
     </div>
     
     <div>
-      <button type="button" class="btn btn-success" onclick="b2d()">Binary to Decimal</button>
-      <button type="button" class="btn btn-success" onclick="b2o()">Binary to Octal</button>
-      <button type="button" class="btn btn-success" onclick="b2h()">Binary to Hexadecimal</button>
+      <button type="button" class="btn btn-success" onclick="convert(get_number(), 2, 10)">Binary to Decimal</button>
+      <button type="button" class="btn btn-success" onclick="convert(get_number(), 2, 8)">Binary to Octal</button>
+      <button type="button" class="btn btn-success" onclick="convert(get_number(), 2, 16)">Binary to Hexadecimal</button>
     </div>
     
     <div>
-      <button type="button" class="btn btn-primary" onclick="o2b()">Octal to Binary</button>
-      <button type="button" class="btn btn-primary" onclick="o2d()">Octal to Decimal</button>
-      <button type="button" class="btn btn-primary" onclick="o2h()">Octal to Hexadecimal</button>
+      <button type="button" class="btn btn-primary" onclick="convert(get_number(), 8, 2)">Octal to Binary</button>
+      <button type="button" class="btn btn-primary" onclick="convert(get_number(), 8, 10)">Octal to Decimal</button>
+      <button type="button" class="btn btn-primary" onclick="convert(get_number(), 8, 16)">Octal to Hexadecimal</button>
     </div>
     
     <div>
-      <button type="button" class="btn btn-warning" onclick="h2b()">Hexadecimal to Binary</button>
-      <button type="button" class="btn btn-warning" onclick="h2o()">Hexadecimal to Octal</button>
-      <button type="button" class="btn btn-warning" onclick="h2d()">Hexadecimal to Decimal</button>
+      <button type="button" class="btn btn-warning" onclick="convert(get_number(), 16, 2)">Hexadecimal to Binary</button>
+      <button type="button" class="btn btn-warning" onclick="convert(get_number(), 16, 8)">Hexadecimal to Octal</button>
+      <button type="button" class="btn btn-warning" onclick="convert(get_number(), 16, 10)">Hexadecimal to Decimal</button>
     </div>
     <footer class="paraColor" id="footer">Mini Project for Thehacktrical2 (organised by MLH)<br>by Aqib Javid Bhat & Mutaib Altaf</footer>
     <script src="index.js"></script>
