@@ -1,0 +1,17 @@
+#input-div {
+    display: none;
+}
+
+::placeholder {
+    color: rgba(198, 188, 188, 0.548) !important;
+}
+
+#footer {
+    font-size: 12px;
+    font-family: sans-serif;
+    position: absolute;
+    bottom: 0;
+    margin: 10px 0px 0px;
+    padding: 10px;
+    width: 100%;
+}
