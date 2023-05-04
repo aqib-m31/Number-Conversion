@@ -15,37 +15,80 @@ document.addEventListener('DOMContentLoaded', () => {
     let input = document.getElementById('input-div');
     let nav = document.getElementById('nav');
     let navLinks = document.getElementsByClassName('nav-link');
-    setPage(page, 0, btnDiv, input, navLinks);
+    let heading = document.getElementById('title');
 
     nav.addEventListener('click', () => {
-        setPage(page, 0, btnDiv, input, navLinks);
+        setPage(page, 0, btnDiv, input, nav, navLinks, heading);
     });
 
     for (let link of navLinks)
     {
         link.addEventListener('click', () => {
-            setPage(page, bases[link.id], btnDiv, input);
-            if (bases[link.id] == page.value)
+            if (link.id == 'Home')
             {
-                for (let li of navLinks)
-                {
-                    li.setAttribute('class', 'nav-link');
-                }
-                link.setAttribute('class', 'nav-link active');
+                setPage(page, 0, btnDiv, input, nav, navLinks, heading);
+            }
+            else 
+            {
+                setPage(page, bases[link.id], btnDiv, input, nav, navLinks, heading);
             }
         });
     }
+    setPage(page, 0, btnDiv, input, nav, navLinks, heading);
 });
 
+
 // Function to set the value of hidden input to determine the content
-function setPage(page, base, btnDiv, input, nav)
+function setPage(page, base, btnDiv, input, nav, navLinks, heading)
 {
     page.value = base;
-    checkPage(page, btnDiv, input, nav);
+    updateNav(navLinks);
+    updateHeading(page, heading);
+    checkPage(page, btnDiv, input, nav, navLinks, heading);
+}
+
+// Function for updating the page heading text
+function updateHeading(page, heading)
+{
+    switch (page.value)
+    {
+        case "2":
+            heading.setAttribute('class', "fw-bold text-white fs-2");
+            heading.innerHTML = 'BINARY CONVERSION';
+            break;
+        case "8":
+            heading.innerHTML = 'OCTAL CONVERSION';
+            break;
+        case "10":
+            heading.innerHTML = 'DECIMAL CONVERSION';
+            break;
+        case "16":
+            heading.innerHTML = 'HEXADECIMAL CONVERSION';
+            break;
+        default:
+            heading.setAttribute('class', "fw-bold text-white fs-1");
+            heading.innerHTML = 'NUMBER CONVERSION';
+    }
+}
+
+// Function for updating the class of active link
+function updateNav(navLinks)
+{
+    for (let link of navLinks)
+    {
+        if (bases[link.id] == page.value || (page.value == 0 && link.id == 'Home'))
+        {
+            link.setAttribute('class', 'nav-link active');
+        }
+        else
+        {
+            link.setAttribute('class', 'nav-link');
+        }
+    }
 }
 
 // Check input to determine what to display
-function checkPage(page, btnDiv, input, nav)
+function checkPage(page, btnDiv, input, nav, navLinks, heading)
 {
     let answer = document.getElementById('answer');
     if (page.value == 0)
@@ -53,17 +96,13 @@ function checkPage(page, btnDiv, input, nav)
         input.style.display = 'none';
         btnDiv.innerHTML = '';
         answer.style.display = 'none';
-        for (let link of nav)
-        {
-            link.setAttribute('class', 'nav-link');
-        }
         for (const [name, base] of Object.entries(bases))
         {
             let button = document.createElement('button');
-            button.setAttribute('class', 'btn-primary my-2 fs-2 convert');
+            button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
             button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
             button.addEventListener('click', () => {
-                setPage(page, base, btnDiv, input);
+                setPage(page, base, btnDiv, input, nav, navLinks, heading);
             });
             button.innerHTML = `Convert ${name}`;
             btnDiv.appendChild(button);
@@ -79,13 +118,13 @@ function checkPage(page, btnDiv, input, nav)
             if (base != 2)
             {
                 let button = document.createElement('button');
-                button.setAttribute('class', 'btn-primary my-2 fs-2 convert');
+                button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
                 button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
                 button.addEventListener('click', () => {
                     let ans = convert(getNumber(), page.value, base);
                     answer.innerHTML = `${ans}`
                 });
-                button.innerHTML = `Convert ${name}`;
+                button.innerHTML = `To ${name}`;
                 btnDiv.appendChild(button);
             }
         }
@@ -100,13 +139,13 @@ function checkPage(page, btnDiv, input, nav)
             if (base != 8)
             {
                 let button = document.createElement('button');
-                button.setAttribute('class', 'btn-primary my-2 fs-2 convert');
+                button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
                 button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
                 button.addEventListener('click', () => {
                     let ans = convert(getNumber(), page.value, base);
                     answer.innerHTML = `${ans}`
                 });
-                button.innerHTML = `Convert ${name}`;
+                button.innerHTML = `To ${name}`;
                 btnDiv.appendChild(button);
             }
         }
@@ -121,13 +160,13 @@ function checkPage(page, btnDiv, input, nav)
             if (base != 10)
             {
                 let button = document.createElement('button');
-                button.setAttribute('class', 'btn-primary my-2 fs-2 convert');
+                button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
                 button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
                 button.addEventListener('click', () => {
                     let ans = convert(getNumber(), page.value, base);
                     answer.innerHTML = `${ans}`
                 });
-                button.innerHTML = `Convert ${name}`;
+                button.innerHTML = `To ${name}`;
                 btnDiv.appendChild(button);
             }
         }
@@ -142,13 +181,13 @@ function checkPage(page, btnDiv, input, nav)
             if (base != 16)
             {
                 let button = document.createElement('button');
-                button.setAttribute('class', 'btn-primary my-2 fs-2 convert');
+                button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
                 button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
                 button.addEventListener('click', () => {
                     let ans = convert(getNumber(), page.value, base);
                     answer.innerHTML = `${ans}`
                 });
-                button.innerHTML = `Convert ${name}`;
+                button.innerHTML = `To ${name}`;
                 btnDiv.appendChild(button);
             }
         }

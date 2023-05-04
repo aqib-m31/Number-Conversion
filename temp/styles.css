@@ -1,3 +1,4 @@
+
 #input-div {
     display: none;
 }
@@ -6,12 +7,19 @@
     color: rgba(198, 188, 188, 0.548) !important;
 }
 
-#footer {
-    font-size: 12px;
-    font-family: sans-serif;
-    position: absolute;
-    bottom: 0;
-    margin: 10px 0px 0px;
-    padding: 10px;
-    width: 100%;
+@media (max-width: 992px)
+{
+    #list {
+        font-size: 1rem !important;
+    }
+}
+
+button:hover {
+    background-color: transparent !important;
+    color: white !important;
+}
+
+#title {
+    color: rgb(134 239 172) !important;
+    /* font-size: 2.2rem !important; */
 }
