@@ -121,6 +121,7 @@ function checkPage(page, btnDiv, input, nav, navLinks, heading, form)
         input.style.display = 'block';
         btnDiv.innerHTML = '';
         answer.style.display = 'block';
+        answer.innerHTML = 'Answer will appear here';
         for (const [name, base] of Object.entries(bases))
         {
             if (base != 2)
@@ -142,6 +143,7 @@ function checkPage(page, btnDiv, input, nav, navLinks, heading, form)
         input.style.display = 'block';
         btnDiv.innerHTML = '';
         answer.style.display = 'block';
+        answer.innerHTML = 'Answer will appear here';
         for (const [name, base] of Object.entries(bases))
         {
             if (base != 8)
@@ -163,6 +165,7 @@ function checkPage(page, btnDiv, input, nav, navLinks, heading, form)
         input.style.display = 'block';
         btnDiv.innerHTML = '';
         answer.style.display = 'block';
+        answer.innerHTML = 'Answer will appear here';
         for (const [name, base] of Object.entries(bases))
         {
             if (base != 10)
@@ -184,6 +187,7 @@ function checkPage(page, btnDiv, input, nav, navLinks, heading, form)
         input.style.display = 'block';
         btnDiv.innerHTML = '';
         answer.style.display = 'block';
+        answer.innerHTML = 'Answer will appear here';
         for (const [name, base] of Object.entries(bases))
         {
             if (base != 16)
