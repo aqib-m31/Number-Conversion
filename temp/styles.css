@@ -1,4 +1,3 @@
-
 #input-div {
     display: none;
 }
@@ -20,6 +19,20 @@ button:hover {
 }
 
 #title {
-    color: rgb(134 239 172) !important;
-    /* font-size: 2.2rem !important; */
+    color: #86EFAC !important;
+}
+
+main {
+    padding-bottom: 120px;
+}
+
+#footer {
+    background-color: rgb(55,65,81) !important;
+    color: #9CA3AF !important;
+    font-size: small;
+    font-family: 'Istok Web', sans-serif;
+}
+
+#answer {
+    background-color: #374151;
 }

@@ -6,45 +6,50 @@ const bases = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Prevent default submit action
     document.querySelector('form').addEventListener('submit', (event) => {
         event.preventDefault();
     });
 
+    // Select the necessary elements
     let page = document.getElementById('page');
     let btnDiv = document.getElementById('btns');
     let input = document.getElementById('input-div');
     let nav = document.getElementById('nav');
     let navLinks = document.getElementsByClassName('nav-link');
     let heading = document.getElementById('title');
+    let form = document.getElementById('form');
 
+    // Add event listeners to the Nav brand and nav-bar links
     nav.addEventListener('click', () => {
-        setPage(page, 0, btnDiv, input, nav, navLinks, heading);
+        setPage(page, 0, btnDiv, input, nav, navLinks, heading, form);
     });
-
     for (let link of navLinks)
     {
         link.addEventListener('click', () => {
             if (link.id == 'Home')
             {
-                setPage(page, 0, btnDiv, input, nav, navLinks, heading);
+                setPage(page, 0, btnDiv, input, nav, navLinks, heading, form);
             }
             else 
             {
-                setPage(page, bases[link.id], btnDiv, input, nav, navLinks, heading);
+                setPage(page, bases[link.id], btnDiv, input, nav, navLinks, heading, form);
             }
         });
     }
-    setPage(page, 0, btnDiv, input, nav, navLinks, heading);
+
+    // Set initial page to HOME
+    setPage(page, 0, btnDiv, input, nav, navLinks, heading, form);
 });
 
-
 // Function to set the value of hidden input to determine the content
-function setPage(page, base, btnDiv, input, nav, navLinks, heading)
+function setPage(page, base, btnDiv, input, nav, navLinks, heading, form)
 {
     page.value = base;
     updateNav(navLinks);
     updateHeading(page, heading);
-    checkPage(page, btnDiv, input, nav, navLinks, heading);
+    form.reset();
+    checkPage(page, btnDiv, input, nav, navLinks, heading, form);
 }
 
 // Function for updating the page heading text
@@ -57,12 +62,15 @@ function updateHeading(page, heading)
             heading.innerHTML = 'BINARY CONVERSION';
             break;
         case "8":
+            heading.setAttribute('class', "fw-bold text-white fs-2");
             heading.innerHTML = 'OCTAL CONVERSION';
             break;
         case "10":
+            heading.setAttribute('class', "fw-bold text-white fs-2");
             heading.innerHTML = 'DECIMAL CONVERSION';
             break;
         case "16":
+            heading.setAttribute('class', "fw-bold text-white fs-2");
             heading.innerHTML = 'HEXADECIMAL CONVERSION';
             break;
         default:
@@ -88,7 +96,7 @@ function updateNav(navLinks)
 }
 
 // Check input to determine what to display
-function checkPage(page, btnDiv, input, nav, navLinks, heading)
+function checkPage(page, btnDiv, input, nav, navLinks, heading, form)
 {
     let answer = document.getElementById('answer');
     if (page.value == 0)
@@ -99,10 +107,10 @@ function checkPage(page, btnDiv, input, nav, navLinks, heading)
         for (const [name, base] of Object.entries(bases))
         {
             let button = document.createElement('button');
-            button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0');
+            button.setAttribute('class', 'btn btn-light my-2 fs-3 fw-semibold convert border border-white border-3 rounded-0 text-uppercase');
             button.setAttribute('id', `${name.toLowerCase().substring(0, 3)}`);
             button.addEventListener('click', () => {
-                setPage(page, base, btnDiv, input, nav, navLinks, heading);
+                setPage(page, base, btnDiv, input, nav, navLinks, heading, form);
             });
             button.innerHTML = `Convert ${name}`;
             btnDiv.appendChild(button);
@@ -240,7 +248,6 @@ function isHexadecimal(hexadecimalNum)
     return hexadecimalFormat.test(hexadecimalNum);
 }
 
-
 // Converts a decimal number to provided base (2, 8, 16)
 function convertDecimalNumber(decimalNum, base)
 {
@@ -341,7 +348,11 @@ function convertDecimalNumber(decimalNum, base)
         }
         resultNum += resultFraction;
     }
-    return resultNum.substring(0, resultNum.indexOf('.') + 5);
+    if (resultNum.includes('.'))
+    {
+        return resultNum.substring(0, resultNum.indexOf('.') + 5);
+    }
+    return resultNum;
 }
 
 // Converts a binary number to provided base (8, 10, 16)
